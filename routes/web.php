@@ -13,6 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\ReportsController::class, 'index']);
+Route::get('/{hashtag}', [\App\Http\Controllers\ReportsController::class, 'index']);
 
 Route::get('/runScript', [\App\Http\Controllers\RunScriptsController::class, 'index']);
