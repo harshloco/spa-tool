@@ -26,7 +26,7 @@ class CreateSocialPostsDataTable extends Migration
             $table->string('name');
             $table->string('query');
             $table->string('category');
-            $table->timestampsTz('timestamp');
+            $table->timestamp('timestamp');
             $table->timestamps();
         });
     }
