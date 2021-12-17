@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/{hashtag}', [\App\Http\Controllers\ReportsController::class, 'index']);
 
 
 

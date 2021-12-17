@@ -2,7 +2,7 @@
 
 @section('content')
     @include('layouts.headers.cards')
-    
+
     <div class="container-fluid mt--7">
         <div class="row">
             <div class="col-xl-8 mb-5 mb-xl-0">
@@ -46,15 +46,18 @@
                         <div class="row align-items-center">
                             <div class="col">
                                 <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                                <h2 class="mb-0">Total orders</h2>
-                            </div>
+                                <h2 class="mb-0">Total orders </h2>
+                                <!-- Chart's container -->
+                                <div id="chart" style="height: 300px;"></div>
                         </div>
                     </div>
                     <div class="card-body">
                         <!-- Chart -->
-                        <div class="chart">
-                            <canvas id="chart-orders" class="chart-canvas"></canvas>
-                        </div>
+                        <bar-chart
+                            :height="350"
+                            ref="barChart"
+                            :chart-data="redBarChart.chartData">
+                        </bar-chart>
                     </div>
                 </div>
             </div>
@@ -282,8 +285,43 @@
         @include('layouts.footers.auth')
     </div>
 @endsection
+    <!-- Charting library -->
+        <script src="https://unpkg.com/chart.js@^2.9.3/dist/Chart.min.js"></script>
+        <!-- Chartisan -->
+        <script src="https://unpkg.com/@chartisan/chartjs@^2.1.0/dist/chartisan_chartjs.umd.js"></script>
+        <!-- Your application script -->
+        <script>
 
+            const chart = new Chartisan({
+                el: '#chart',
+                url: "@chart('spa')" + "?id=bigforsmall",
+                hooks: new ChartisanHooks()
+                    .colors(['#ECC94B', '#4299E1'])
+                    .responsive()
+                    .beginAtZero()
+                    .legend({ position: 'bottom' })
+                    .title('Top 3 most liked post')
+            });
+        </script>
 @push('js')
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
+    <script>
+        export default {
+            data() {
+                return {
+                    redBarChart: {
+                        chartData: {
+                            labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                            datasets: [{
+                                label: 'Sales',
+                                data: [25, 20, 30, 22, 17, 29]
+                            }]
+                        }
+                    }
+
+                };
+            }
+        };
+    </script>
 @endpush

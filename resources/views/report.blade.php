@@ -16,19 +16,15 @@
 <!-- Your application script -->
 <script>
 
-    //var app1 = @json($data);
-    //var app1 = @json($data);
-    //console.log(app1);
-
     const chart = new Chartisan({
         el: '#chart',
-        url: "@chart('spa')" + "?data=test",
+        url: "@chart('spa')" + "?id={{ $data }}",
         hooks: new ChartisanHooks()
             .colors(['#ECC94B', '#4299E1'])
             .responsive()
             .beginAtZero()
             .legend({ position: 'bottom' })
-            .title('Top 3 most liked post')
+            .title('Top 3 most liked post with #{{ $data }}')
     });
 </script>
 </body>
