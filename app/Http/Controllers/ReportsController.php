@@ -31,8 +31,19 @@ class ReportsController extends Controller
             $likeCount[] = $liked->likeCount;
         }
 
+        $totalLiked = DB::table('social_posts_data_v2')->where('query','=' ,'#'.$hashtag)->sum('likeCount');
+        $totalCommented = DB::table('social_posts_data_v2')->where('query','=' ,'#'.$hashtag)->sum('commentCount');
+        $totalPosts = DB::table('social_posts_data_v2')->where('query','=' ,'#'.$hashtag)->count('id');
+        $totalPosts = DB::table('social_posts_data_v2')->where('query','=' ,'#'.$hashtag)->count('id');
 
-        return view('report', ['data' => $hashtag, 'mostLiked' => $mostLiked, 'mostComment' => $mostCommented]);
+        return view('report', [
+            'data' => $hashtag,
+            'mostLiked' => $mostLiked,
+            'mostComment' => $mostCommented,
+            'totalLiked' => $totalLiked,
+            'totalCommented' => $totalCommented,
+            'totalPosts' => $totalPosts,
+        ]);
 
     }
 }
