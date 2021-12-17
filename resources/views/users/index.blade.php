@@ -148,7 +148,7 @@
                     <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
                 </a>
             </li>
-            <li class="nav-item">
+<!--            <li class="nav-item">
                 <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
                     <i class="fab fa-laravel" style="color: #f4645f;"></i>
                     <span class="nav-link-text" style="color: #f4645f;">{{ __('Laravel Examples') }}</span>
@@ -184,13 +184,13 @@
                 <a class="nav-link" href="{{ route('table') }}">
                   <i class="ni ni-bullet-list-67 text-default"></i>
                   <span class="nav-link-text">Tables</span>
-                </a>
+                </a>-->
         </ul>
         <!-- Divider -->
-        <hr class="my-3">
-        <!-- Heading -->
+<!--        <hr class="my-3">
+        &lt;!&ndash; Heading &ndash;&gt;
         <h6 class="navbar-heading text-muted">Documentation</h6>
-        <!-- Navigation -->
+        &lt;!&ndash; Navigation &ndash;&gt;
         <ul class="navbar-nav mb-md-3">
             <li class="nav-item">
                 <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
@@ -207,7 +207,7 @@
                     <i class="ni ni-ui-04"></i> Components
                 </a>
             </li>
-        </ul>
+        </ul>-->
     </div>
 </div>
 </nav>
@@ -237,7 +237,7 @@
                         <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg">
                     </span>
                     <div class="media-body ml-2 d-none d-lg-block">
-                        <span class="mb-0 text-sm  font-weight-bold">Admin Admin</span>
+                        <span class="mb-0 text-sm  font-weight-bold">ELMO Admin</span>
                     </div>
                 </div>
             </a>
