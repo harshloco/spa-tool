@@ -31,13 +31,8 @@ class ReportsController extends Controller
             $likeCount[] = $liked->likeCount;
         }
 
-//        return view('report', [
-//            'liked' => ['names' => $names, 'likeCount' => $likeCount],
-//            //'commented' => >
-//        ]);
-        // return view('welcome');
 
-        return view('report', ['data' => $hashtag]);
+        return view('report', ['data' => $hashtag, 'mostLiked' => $mostLiked, 'mostComment' => $mostCommented]);
 
     }
 }
