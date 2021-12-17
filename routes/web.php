@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('table-list', function () {return view('pages.tables');})->name('table');
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
     Route::get('report/{hashtag}', [\App\Http\Controllers\ReportsController::class, 'index']);
-//    Route::get('/{hashtag}', [\App\Http\Controllers\ReportsController::class, 'index']);
-//
+    Route::get('/script/run', [\App\Http\Controllers\RunScriptsController::class, 'index']);
+
 //    Route::get('/runScript', [\App\Http\Controllers\RunScriptsController::class, 'index']);
 });

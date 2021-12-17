@@ -9,7 +9,7 @@ use ConsoleTVs\Charts\BaseChart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class Spa extends BaseChart
+class Comment extends BaseChart
 {
     /**
      * Handles the HTTP request for the given chart.
@@ -36,20 +36,20 @@ class Spa extends BaseChart
 
         $names  = [];
         $likeCount = [];
-        foreach($mostLiked as $liked){
+        foreach($mostCommented as $liked){
             //echo $liked->postUrl;
             //$names[] = $liked->name;
             array_push($names,$liked->name);
-           //echo $liked->name;
+            //echo $liked->name;
             $likeCount[] = $liked->likeCount;
             array_push($likeCount,$liked->likeCount);
             //echo $liked->likeCount;
         }
-       // $result[] = ['liked' => $mostLiked];
+        // $result[] = ['liked' => $mostLiked];
 
         return Chartisan::build()
             ->labels($names)
             ->dataset('names', $likeCount);
-           // ->dataset('Sample 2', [3, 2, 1]);
+        // ->dataset('Sample 2', [3, 2, 1]);
     }
 }

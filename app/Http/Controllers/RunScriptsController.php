@@ -14,20 +14,20 @@ class RunScriptsController
         curl_setopt($ch, CURLOPT_URL, 'https://api.phantombuster.com/api/v2/agents/launch');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS,
-            '{"id":"1362320075177748","argument":{"firstCircle":true,"secondCircle":true,"thirdCircle":true,"category":"Content","numberOfLinesPerLaunch":10,"sessionCookie":"AQEDAQ322PsEjesiAAABemASMJUAAAF91j8nCU4ANyP5MREGLe9DqJeBJlA2ikAS0D5e-JPlgsGIaYpFHt4U5a2e82Hcb5JOpGnoP8aCnCbuJvsqkDkJIz4_tf-rwgNV7CbLQs8DsUdBYpFqIWAdGQ2V","search":"#css","numberOfResultsPerSearch":10,"numberOfResultsPerLaunch":10}}');
+        curl_setopt($ch, CURLOPT_POSTFIELDS, '{"id":"5274236023885323","argument":{"firstCircle":false,"secondCircle":true,"thirdCircle":true,"category":"Content","numberOfLinesPerLaunch":10,"sessionCookie":"AQEDAQ322PsEjesiAAABemASMJUAAAF91j8nCU4ANyP5MREGLe9DqJeBJlA2ikAS0D5e-JPlgsGIaYpFHt4U5a2e82Hcb5JOpGnoP8aCnCbuJvsqkDkJIz4_tf-rwgNV7CbLQs8DsUdBYpFqIWAdGQ2V","search":"#summer","numberOfResultsPerSearch":10,"numberOfResultsPerLaunch":10}}');
 
-        $headers = [];
+        $headers = array();
         $headers[] = 'Content-Type: application/json';
         $headers[] = 'X-Phantombuster-Key: '.env('PHANTOM_API_KEY');
-
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
         $result = curl_exec($ch);
         if (curl_errno($ch)) {
-            echo 'Error:'.curl_error($ch);
+            echo 'Error:' . curl_error($ch);
         }
         curl_close($ch);
+
+
 
         $containerId = json_decode($result, true)['containerId'];
         echo '$containerId '.$containerId;
