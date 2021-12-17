@@ -17,6 +17,8 @@ class Spa extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
+        $data = $request->data;
+        var_dump($data);
         return Chartisan::build()
             ->labels(['Adam', 'Lucy', 'Peter'])
             ->dataset('', [10, 16, 20]);
