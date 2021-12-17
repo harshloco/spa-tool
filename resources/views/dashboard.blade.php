@@ -46,18 +46,15 @@
                         <div class="row align-items-center">
                             <div class="col">
                                 <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                                <h2 class="mb-0">Total orders </h2>
-                                <!-- Chart's container -->
-                                <div id="chart" style="height: 300px;"></div>
+                                <h2 class="mb-0">Total orders</h2>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <!-- Chart -->
-                        <bar-chart
-                            :height="350"
-                            ref="barChart"
-                            :chart-data="redBarChart.chartData">
-                        </bar-chart>
+                        <div class="chart">
+                            <canvas id="chart-news" class="chart-canvas"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -285,43 +282,45 @@
         @include('layouts.footers.auth')
     </div>
 @endsection
-    <!-- Charting library -->
-        <script src="https://unpkg.com/chart.js@^2.9.3/dist/Chart.min.js"></script>
-        <!-- Chartisan -->
-        <script src="https://unpkg.com/@chartisan/chartjs@^2.1.0/dist/chartisan_chartjs.umd.js"></script>
-        <!-- Your application script -->
-        <script>
 
-            const chart = new Chartisan({
-                el: '#chart',
-                url: "@chart('spa')" + "?id=bigforsmall",
-                hooks: new ChartisanHooks()
-                    .colors(['#ECC94B', '#4299E1'])
-                    .responsive()
-                    .beginAtZero()
-                    .legend({ position: 'bottom' })
-                    .title('Top 3 most liked post')
-            });
-        </script>
 @push('js')
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
     <script>
-        export default {
-            data() {
-                return {
-                    redBarChart: {
-                        chartData: {
-                            labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                            datasets: [{
-                                label: 'Sales',
-                                data: [25, 20, 30, 22, 17, 29]
-                            }]
-                        }
+        const ctx = document.getElementById('chart-news').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
-
-                };
+                }
             }
-        };
+        });
     </script>
 @endpush
